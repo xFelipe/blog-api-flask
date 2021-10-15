@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from db import db, User, ValidationError
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash
 from flask_jwt_extended import create_access_token, JWTManager
 
 

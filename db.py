@@ -1,6 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
 from marshmallow import ValidationError
-from sqlalchemy.orm import backref
 from schemas import UserSchema
 from werkzeug.security import generate_password_hash
 
@@ -14,6 +13,7 @@ class User(db.Model):
 
     posts = db.relationship('Post', backref='user', lazy='dynamic')
     comments = db.relationship('Comment', backref='user', lazy='dynamic')
+    albuns = db.relationship('Album', backref='user', lazy='dynamic')
 
     def __repr__(self) -> str:
         return self.email
@@ -43,3 +43,19 @@ class Comment(db.Model):
     body = db.Column(db.Text(), nullable=False)
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable=False)
     post_id = db.Column(db.Integer(), db.ForeignKey('post.id'), nullable=False)
+
+
+class Album(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(255), nullable=True)
+    user_id = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable=False)
+
+    photos = db.relationship('Photo', backref='album', lazy='dynamic')
+
+
+class Photo(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    title = db.Column(db.String(255), nullable=True)
+    file_name = db.Column(db.String(255), nullable=False)
+    file = db.Column(db.LargeBinary(), nullable=False)
+    album_id = db.Column(db.Integer(), db.ForeignKey('album.id'), nullable=False)

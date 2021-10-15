@@ -1,6 +1,5 @@
-from flask import Flask, request, jsonify
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-from werkzeug.security import safe_str_cmp
+from flask import Flask
+from flask_jwt_extended import jwt_required, get_jwt_identity
 import os
 from security import jwt, blueprint as security_bp
 from db import db
