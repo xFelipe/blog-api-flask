@@ -10,12 +10,12 @@ blueprint = Blueprint('security_blueprint', __name__)
 
 @blueprint.route("/login", methods=["POST"])
 def login():
-    username = request.json.get("username")
+    email = request.json.get("email")
     password = request.json.get("password")
 
-    user = User.query.filter_by(username=username).first()
+    user = User.query.filter_by(email=email).first()
     if not user or not check_password_hash(user.password, password):
-        return jsonify({"error": "Bad username or password"}), 401
+        return jsonify({"error": "Bad email or password"}), 401
 
     access_token = create_access_token(identity=user.id)
     return jsonify(access_token=access_token)
@@ -23,11 +23,11 @@ def login():
 
 @blueprint.route("/register", methods=["POST"])
 def register():
-    username = request.json.get("username")
+    email = request.json.get("email")
     password = request.json.get("password")
 
     try:
-        new_user = User(username, password)
+        new_user = User(email, password)
     except ValidationError as e:
         return jsonify({"error": e.messages}), 401
 
@@ -35,4 +35,4 @@ def register():
     session.add(new_user)
     session.commit()
 
-    return jsonify(user={'username': new_user.username}), 201
+    return jsonify(user={'email': new_user.email}), 201
