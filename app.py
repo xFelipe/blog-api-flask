@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify
-from flask_restx import Api, fields, Resource
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from werkzeug.security import safe_str_cmp
 import os
-from db import db, User
 from security import jwt, blueprint as security_bp
+from db import db
+from api_v1 import api
 
 
 basedir = os.path.dirname(os.path.realpath(__file__))
@@ -17,16 +17,9 @@ app.config['SQLALCHEMY_ECHO'] = True
 
 db.init_app(app)
 jwt.init_app(app)
+api.init_app(app)
 
 app.register_blueprint(security_bp, url_prefix='/api')
-
-api = Api(app, title='Blog', description='Desafio Framework')
-
-
-class Post(Resource): pass
-class Comment(Resource): pass
-class Album(Resource): pass
-class Foto(Resource): pass
 
 
 @app.route('/hello')
@@ -39,8 +32,7 @@ def hello():
 @app.shell_context_processor
 def make_shell_context():
     return {
-        'db': db,
-        'User': User
+        'db': db
     }
 
 
