@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_jwt_extended import jwt_required, get_jwt_identity
 import os
-from security import jwt, blueprint as security_bp
-from db import db
-from api_v1 import api
+from core.security import jwt, blueprint as security_bp
+from core.db import db
+from api_v1 import blueprint as api_v1_bp, api as api_v1
 
 
 basedir = os.path.dirname(os.path.realpath(__file__))
@@ -16,9 +16,9 @@ app.config['SQLALCHEMY_ECHO'] = True
 
 db.init_app(app)
 jwt.init_app(app)
-api.init_app(app)
 
 app.register_blueprint(security_bp, url_prefix='/api')
+app.register_blueprint(api_v1_bp, url_prefix='/api/v1')
 
 
 @app.route('/hello')
