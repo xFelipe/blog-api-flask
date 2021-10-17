@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, session
+from flask import Blueprint, request, jsonify
 from core.db import db, User, ValidationError
 from werkzeug.security import check_password_hash
 from flask_jwt_extended import create_access_token, JWTManager

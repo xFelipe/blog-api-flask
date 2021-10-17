@@ -3,7 +3,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 import os
 from core.security import jwt, blueprint as security_bp
 from core.db import db
-from api_v1 import blueprint as api_v1_bp, api as api_v1
+from api_v1 import blueprint as api_v1_bp
 
 
 basedir = os.path.dirname(os.path.realpath(__file__))
