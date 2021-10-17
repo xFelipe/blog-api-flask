@@ -13,6 +13,7 @@ app.config['SECRET_KEY'] = 'C_H-l786ithiul76u5yrht77rth'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir,'sqlite.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
+app.config['ERROR_404_HELP'] = False
 
 db.init_app(app)
 jwt.init_app(app)

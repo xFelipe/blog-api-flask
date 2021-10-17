@@ -19,3 +19,11 @@ class PostSchema(Schema):
 
     title = fields.String(required=True)
     body = fields.String(required=True)
+
+
+class CommentSchema(Schema):
+    class Meta:
+        unknowl = EXCLUDE
+
+    body = fields.String(required=True)
+    post_id = fields.Integer(required=True)

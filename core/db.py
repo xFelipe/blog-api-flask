@@ -36,6 +36,13 @@ class Post(db.Model):
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable=False)
 
     comments = db.relationship('Comment', backref='post', lazy='dynamic', cascade='all,delete')
+    
+    @classmethod
+    def get_or_404(cls, post_id):
+        return cls.query.get_or_404(
+            post_id,
+            description=f'Não foi possível localizar o post com id {post_id}'
+        )
 
 
 class Comment(db.Model):
@@ -44,6 +51,13 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable=False)
     post_id = db.Column(db.Integer(), db.ForeignKey('post.id'), nullable=False)
 
+
+    @classmethod
+    def get_or_404(cls, post_id):
+        return cls.query.get_or_404(
+            post_id,
+            description=f'Não foi possível localizar o comentário com id {post_id}'
+        )
 
 class Album(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
