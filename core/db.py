@@ -11,9 +11,9 @@ class User(db.Model):
     email = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
 
-    posts = db.relationship('Post', backref='user', lazy='dynamic')
+    posts = db.relationship('Post', backref='user', lazy='dynamic', cascade='all,delete')
     comments = db.relationship('Comment', backref='user', lazy='dynamic')
-    albuns = db.relationship('Album', backref='user', lazy='dynamic')
+    albuns = db.relationship('Album', backref='user', lazy='dynamic', cascade='all,delete')
 
     def __repr__(self) -> str:
         return self.email
@@ -35,7 +35,7 @@ class Post(db.Model):
     body = db.Column(db.Text(), nullable=False)
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable=False)
 
-    comments = db.relationship('Comment', backref='post', lazy='dynamic')
+    comments = db.relationship('Comment', backref='post', lazy='dynamic', cascade='all,delete')
 
 
 class Comment(db.Model):
@@ -50,7 +50,7 @@ class Album(db.Model):
     name = db.Column(db.String(255), nullable=True)
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable=False)
 
-    photos = db.relationship('Photo', backref='album', lazy='dynamic')
+    photos = db.relationship('Photo', backref='album', lazy='dynamic', cascade='all,delete')
 
 
 class Photo(db.Model):
