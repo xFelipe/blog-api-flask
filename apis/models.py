@@ -7,10 +7,10 @@ user_model = Model('User', {
 })
 
 post_model = Model('Post', {
-        'id': fields.Integer(readonly=True, description='Identificador único do post'),
-        'title': fields.String(required=True, description='Título do post'),
-        'body': fields.String(required=True, description='Corpo do post'),
-        'user': fields.Nested(user_model, description='Criador do post')
+    'id': fields.Integer(readonly=True, description='Identificador único do post'),
+    'title': fields.String(required=True, description='Título do post'),
+    'body': fields.String(required=True, description='Corpo do post em Markdown'),
+    'user': fields.Nested(user_model, description='Criador do post')
 })
 
 comment_model = Model('Comment', {
@@ -33,9 +33,9 @@ _post_comment_model = Model('PostComment', {
 })
 
 commented_post_model = Model('CommentedPost', {
-        'id': fields.Integer(readonly=True, description='Identificador único do post'),
-        'title': fields.String(required=True, description='Título do post'),
-        'body': fields.String(required=True, description='Corpo do post'),
-        'user': fields.Nested(user_model, description='Criador do post'),
-        'comments': fields.List(fields.Nested(_post_comment_model), description='Comentários do post')
+    'id': fields.Integer(readonly=True, description='Identificador único do post'),
+    'title': fields.String(required=True, description='Título do post'),
+    'body': fields.String(required=True, description='Corpo do post em Markdown'),
+    'user': fields.Nested(user_model, description='Criador do post'),
+    'comments': fields.List(fields.Nested(_post_comment_model), description='Comentários do post')
 })
