@@ -1,0 +1,636 @@
+{
+	"info": {
+		"_postman_id": "91edd7a8-0835-4e13-9775-96c3e14b9ff6",
+		"name": "desafio-framework",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"felipe@mail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"felipe@mail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "post",
+			"item": [
+				{
+					"name": "list posts",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDQ0ODM0NCwianRpIjoiNjAwMDUzYjctNTRkNC00NjNkLTk0MDEtYWU5N2I3OGYwZjg0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjM0NDQ4MzQ0LCJleHAiOjE2MzQ0NDkyNDR9.7lBhivJpgq9JIDQnlqC-tUk9DYqEjMH0TBFwcx3JsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/post/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDU0NDI5MiwianRpIjoiOGU4NTI1NjgtMDY0MS00NTYzLWJmNmEtNTk5ZGVmMWFkNTU2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjM0NTQ0MjkyLCJleHAiOjE2MzQ1NDUxOTJ9.v3EzyUULu5CSRhrhM74VeeiVQP65aIRdjpP5TDiV0BM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"post title 1\",\n    \"body\": \"post body 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDU0NDI5MiwianRpIjoiOGU4NTI1NjgtMDY0MS00NTYzLWJmNmEtNTk5ZGVmMWFkNTU2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjM0NTQ0MjkyLCJleHAiOjE2MzQ1NDUxOTJ9.v3EzyUULu5CSRhrhM74VeeiVQP65aIRdjpP5TDiV0BM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/post/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "list comments",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDQ0OTYyOCwianRpIjoiOWFjMmI5ODUtMzA5Yi00ZjYwLWI4YTUtMTQ1ZmY5NmY1ZGE4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjM0NDQ5NjI4LCJleHAiOjE2MzQ0NTA1Mjh9.pLYlMm5Mf8ChMtDG5Nx9TRyMmyqaGAylT19uziFqJF0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/comment/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDU0NDI5MiwianRpIjoiOGU4NTI1NjgtMDY0MS00NTYzLWJmNmEtNTk5ZGVmMWFkNTU2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjM0NTQ0MjkyLCJleHAiOjE2MzQ1NDUxOTJ9.v3EzyUULu5CSRhrhM74VeeiVQP65aIRdjpP5TDiV0BM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"body\": \"Comment 1 body\",\n    \"post_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDQ1MTcwNywianRpIjoiODUwMDFjNmEtZWQzNS00MjFmLWI3OTAtNDFjMjA4Yjk4ZDZhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjM0NDUxNzA3LCJleHAiOjE2MzQ0NTI2MDd9.T-VtJNynPMUrUV8wQadn1iycmCcSAfn9mKO4BLpKoT8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/comment/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "album",
+			"item": [
+				{
+					"name": "list album",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/album",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"album"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "album",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDQ0ODM0NCwianRpIjoiNjAwMDUzYjctNTRkNC00NjNkLTk0MDEtYWU5N2I3OGYwZjg0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjM0NDQ4MzQ0LCJleHAiOjE2MzQ0NDkyNDR9.7lBhivJpgq9JIDQnlqC-tUk9DYqEjMH0TBFwcx3JsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/album/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"album",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "album",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDU0NDAwMCwianRpIjoiMTIzNDc5MmYtODJjMC00ZTAyLWE5ZjAtNTkyOGFjMzViZTA3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjM0NTQ0MDAwLCJleHAiOjE2MzQ1NDQ5MDB9.4QSD4BFKKeiJAtR7fqy_-0NCzyqVj_gxV48G7uaFYFU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"album1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/album",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"album"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "album",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDQ0ODM0NCwianRpIjoiNjAwMDUzYjctNTRkNC00NjNkLTk0MDEtYWU5N2I3OGYwZjg0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjM0NDQ4MzQ0LCJleHAiOjE2MzQ0NDkyNDR9.7lBhivJpgq9JIDQnlqC-tUk9DYqEjMH0TBFwcx3JsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/post/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "photo",
+			"item": [
+				{
+					"name": "list photo",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/photo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"photo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "photo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDQ0ODM0NCwianRpIjoiNjAwMDUzYjctNTRkNC00NjNkLTk0MDEtYWU5N2I3OGYwZjg0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjM0NDQ4MzQ0LCJleHAiOjE2MzQ0NDkyNDR9.7lBhivJpgq9JIDQnlqC-tUk9DYqEjMH0TBFwcx3JsKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/photo/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"photo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "photo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDU1MDQ5NywianRpIjoiYzc2N2JiMmYtMmUzNS00ZTZkLWE5ODctNjEyNThhZDViYmIzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjM0NTUwNDk3LCJleHAiOjE2MzQ1NTEzOTd9.h1NjK22yEIWanxFUYee5yXO2bbBKygyV94AQz1tIaMc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/felipe/Imagens/Screenshot_20210831_172238.png"
+								},
+								{
+									"key": "title",
+									"value": "Foto 1",
+									"type": "text"
+								},
+								{
+									"key": "album_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/photo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"photo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "photo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDU0ODQyNywianRpIjoiN2Q2NWM3YTQtNmJiMy00MjY4LTllMTItMWI5OTc5MDliNGY2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNjM0NTQ4NDI3LCJleHAiOjE2MzQ1NDkzMjd9.UOKBEAGGPtrXH9NBarY3RwJSRVZB4JPOUcZtM5JUmX8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/photo/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"photo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "download photo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/files/photo/f73a0048-d542-48e8-a722-dae438461591.jpeg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"files",
+								"photo",
+								"f73a0048-d542-48e8-a722-dae438461591.jpeg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

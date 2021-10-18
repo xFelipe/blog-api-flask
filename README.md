@@ -12,6 +12,6 @@
 ## Iniciando API
  - `flask run`
 
-
-
-Obs: Tempo de validade do token JWT: 15 minutos.
+## Consumo da api
+ - No postman, importar o arquivo `desafio-framework.postman_collection.json` na raiz do projeto para verificar os padrões de requisição
+ - Tempo de validade do token JWT: 15 minutos
