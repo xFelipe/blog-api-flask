@@ -3,7 +3,7 @@ from marshmallow import Schema, fields, validate, EXCLUDE, ValidationError
 
 class UserSchema(Schema):
     class Meta:
-        unknowl = EXCLUDE
+        unknown = EXCLUDE
 
     id = fields.Integer(required=False)
     email = fields.Email(required=True)
@@ -15,7 +15,7 @@ class UserSchema(Schema):
 
 class PostSchema(Schema):
     class Meta:
-        unknowl = EXCLUDE
+        unknown = EXCLUDE
 
     title = fields.String(required=True)
     body = fields.String(required=True)
@@ -23,7 +23,7 @@ class PostSchema(Schema):
 
 class CommentSchema(Schema):
     class Meta:
-        unknowl = EXCLUDE
+        unknown = EXCLUDE
 
     body = fields.String(required=True)
     post_id = fields.Integer(required=True)
@@ -31,6 +31,13 @@ class CommentSchema(Schema):
 
 class AlbumSchema(Schema):
     class Meta:
-        unknowl = EXCLUDE
+        unknown = EXCLUDE
 
     name = fields.String(required=True)
+
+
+class PhotoSchema(Schema):
+    class Meta:
+        unknown = EXCLUDE
+    title = fields.String(required=True)
+    album_id = fields.Integer(required=True)

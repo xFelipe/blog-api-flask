@@ -1,3 +1,4 @@
+from flask import current_app
 from flask_sqlalchemy import SQLAlchemy
 from marshmallow import ValidationError
 from schemas import UserSchema
@@ -77,6 +78,16 @@ class Album(db.Model):
 class Photo(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     title = db.Column(db.String(255), nullable=True)
-    # file_name = db.Column(db.String(255), nullable=False)  # Use this after refactoring image file dynamics
-    file = db.Column(db.LargeBinary(), nullable=False)
+    file_name = db.Column(db.String(255), nullable=False)
     album_id = db.Column(db.Integer(), db.ForeignKey('album.id'), nullable=False)
+
+    @property
+    def file(self) -> str:
+        return current_app.config['PHOTO_URL'] + self.file_name
+
+    @classmethod
+    def get_or_404(cls, photo_id):
+        return cls.query.get_or_404(
+            photo_id,
+            description=f'Não foi possível localizar a foto com id {photo_id}'
+        )

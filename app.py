@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_jwt_extended import jwt_required, get_jwt_identity
 import os
 from core.security import jwt, blueprint as security_bp
@@ -10,6 +10,8 @@ basedir = os.path.dirname(os.path.realpath(__file__))
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'C_H-l786ithiul76u5yrht77rth'
+app.config['PHOTO_FOLDER_PATH'] = './photos'
+app.config['PHOTO_URL'] = '/files/photo/'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir,'sqlite.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
@@ -22,11 +24,13 @@ app.register_blueprint(security_bp, url_prefix='/api')
 app.register_blueprint(api_v1_bp, url_prefix='/api/v1')
 
 
-@app.route('/hello')
-@jwt_required()
-def hello():
-    current_user_id = get_jwt_identity()
-    return {'message': 'Hello world!', 'user': current_user_id}
+@app.route(app.config["PHOTO_URL"]+'<string:file_name>', methods=['GET'])
+def download_photo(file_name):
+    return send_from_directory(
+        app.config['PHOTO_FOLDER_PATH'],
+        file_name,
+        as_attachment=True
+    )
 
 
 @app.shell_context_processor

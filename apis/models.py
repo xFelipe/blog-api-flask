@@ -43,7 +43,8 @@ commented_post_model = Model('CommentedPost', {
 _album_photo_model = Model('AlbumPhoto', {
     'id': fields.Integer(readonly=True, description='Identificador único da foto'),
     'title': fields.String(required=True, description='título da foto'),
-    'file': fields.String()
+    'file_name': fields.String(readonly=True, description='Nome do arquivo da foto'),
+    'file': fields.String(readonly=True, description='Caminho para download da foto'),
 })
 
 album_model = Model('Album', {
@@ -57,4 +58,12 @@ album_description_model = Model('Album', {
     'id': fields.Integer(readonly=True, description='Identificador único do álbum'),
     'name': fields.String(required=True, description='Nome do álbum de fotos'),
     'user': fields.Nested(user_model, description='Dono do álbum')
+})
+
+photo_model = Model('Photo', {
+    'id': fields.Integer(readonly=True, description='Identificador único da foto'),
+    'title': fields.String(required=True, description='Título da foto'),
+    'file_name': fields.String(readonly=True, description='Nome do arquivo da foto'),
+    'file': fields.String(readonly=True, description='Caminho para download da foto'),
+    'album': fields.Nested(album_description_model, description='Álbum onde esta foto se encontra'),
 })

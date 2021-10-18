@@ -11,3 +11,7 @@
 
 ## Iniciando API
  - `flask run`
+
+
+
+Obs: Tempo de validade do token JWT: 15 minutos.
