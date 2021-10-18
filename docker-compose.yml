@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    environment:
+      - SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@db:5432
+    volumes:
+      - ./photos:/app/photos
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+    networks:
+      - api-db-net
+
+  db:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - api-db-net
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  api-db-net:
+
+volumes:
+  postgres_data:

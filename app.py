@@ -12,10 +12,14 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'C_H-l786ithiul76u5yrht77rth'
 app.config['PHOTO_FOLDER_PATH'] = './photos'
 app.config['PHOTO_URL'] = '/files/photo/'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir,'sqlite.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+    'SQLALCHEMY_DATABASE_URI',
+    'sqlite:///' + os.path.join(basedir,'sqlite.db')
+)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['ERROR_404_HELP'] = False
+app.config['PROPAGATE_EXCEPTIONS'] = True
 
 db.init_app(app)
 jwt.init_app(app)
