@@ -27,3 +27,10 @@ class CommentSchema(Schema):
 
     body = fields.String(required=True)
     post_id = fields.Integer(required=True)
+
+
+class AlbumSchema(Schema):
+    class Meta:
+        unknowl = EXCLUDE
+
+    name = fields.String(required=True)

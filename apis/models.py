@@ -20,7 +20,7 @@ comment_model = Model('Comment', {
     'post': fields.Nested(post_model, required=True, description='Post comentado')
 })
 
-delete_comment_model = Model('Comment', {
+deleted_comment_model = Model('Comment', {
     'id': fields.Integer(readonly=True, description='Identificador único do comentário'),
     'body': fields.String(required=True, description='Corpo do comentário'),
     'post_id': fields.Integer(readonly=True, description='Identificador único do post'),
@@ -38,4 +38,23 @@ commented_post_model = Model('CommentedPost', {
     'body': fields.String(required=True, description='Corpo do post em Markdown'),
     'user': fields.Nested(user_model, description='Criador do post'),
     'comments': fields.List(fields.Nested(_post_comment_model), description='Comentários do post')
+})
+
+_album_photo_model = Model('AlbumPhoto', {
+    'id': fields.Integer(readonly=True, description='Identificador único da foto'),
+    'title': fields.String(required=True, description='título da foto'),
+    'file': fields.String()
+})
+
+album_model = Model('Album', {
+    'id': fields.Integer(readonly=True, description='Identificador único do álbum'),
+    'name': fields.String(required=True, description='Nome do álbum de fotos'),
+    'user': fields.Nested(user_model, description='Dono do álbum'),
+    'photos': fields.List(fields.Nested(_album_photo_model), description='Fotos do álbum')
+})
+
+album_description_model = Model('Album', {
+    'id': fields.Integer(readonly=True, description='Identificador único do álbum'),
+    'name': fields.String(required=True, description='Nome do álbum de fotos'),
+    'user': fields.Nested(user_model, description='Dono do álbum')
 })

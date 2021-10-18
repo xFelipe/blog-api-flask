@@ -4,7 +4,7 @@ from flask_restx import Namespace, fields
 from flask_restx import Resource
 from werkzeug.exceptions import BadRequest
 from apis.helpers import delete, validate, save
-from apis.models import user_model, post_model, comment_model, delete_comment_model
+from apis.models import user_model, post_model, comment_model, deleted_comment_model
 from schemas import CommentSchema
 from core import db
 
@@ -12,8 +12,8 @@ from core import db
 ns = Namespace('comment', 'Comentários em post')
 
 ns.add_model('User', user_model)
-ns.add_model('Post', post_model)
 ns.add_model('Comment', comment_model)
+ns.add_model('DeletedComment', deleted_comment_model)
 
 
 @ns.route('')
@@ -44,7 +44,7 @@ class TargetComment(Resource):
         return db.Comment.get_or_404(comment_id)
 
     @jwt_required()
-    @ns.marshal_with(delete_comment_model, code=200, envelope='comment')
+    @ns.marshal_with(deleted_comment_model, code=200, envelope='comment')
     def delete(self, comment_id):
         comment = db.Comment.get_or_404(comment_id)
         current_user_id = get_jwt_identity()

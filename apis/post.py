@@ -2,12 +2,11 @@ from flask_restx.namespace import Namespace
 from flask import request
 from flask_restx import Resource
 from core import db
-from schemas import PostSchema, ValidationError
+from schemas import PostSchema
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from werkzeug.exceptions import BadRequest
-from flask_restx import fields
 from apis.helpers import validate, save, delete
-from apis.models import (user_model, comment_model,
+from apis.models import (user_model, comment_model, _post_comment_model,
                          commented_post_model, post_model)
 
 
@@ -17,6 +16,7 @@ ns.add_model('User', user_model)
 ns.add_model('Comment', comment_model)
 ns.add_model('Post', post_model)
 ns.add_model('CommentedPost', commented_post_model)
+ns.add_model('PostComment', _post_comment_model)
 
 
 @ns.route('')
